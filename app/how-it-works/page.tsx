@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from 'next/link';
 
 export default function HowItWorks() {
   const steps = [
@@ -41,7 +41,10 @@ export default function HowItWorks() {
           ))}
         </div>
         <div className="text-center mt-12">
-          <Link href="/home" className="bg-blue-600 text-white font-semibold py-3 px-6 rounded-lg shadow-lg hover:bg-blue-700 transition duration-300">
+          <Link
+            href="/home"
+            className="bg-blue-600 text-white font-semibold py-3 px-6 rounded-lg shadow-lg hover:bg-blue-700 transition duration-300"
+          >
             Get Started
           </Link>
         </div>
