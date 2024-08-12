@@ -13,10 +13,10 @@ export default function Header() {
 
         {/* Navigation Menu */}
         <nav className="hidden md:flex space-x-6">
-          <Link href="/" className="hover:text-blue-200">
+          <Link href="/home" className="hover:text-blue-200">
             Home
           </Link>
-          <Link href="#how-it-works" className="hover:text-blue-200">
+          <Link href="/how-it-works" className="hover:text-blue-200">
             How It Works
           </Link>
           <Link href="#services" className="hover:text-blue-200">
