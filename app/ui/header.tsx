@@ -1,37 +1,50 @@
-import Link from "next/link";
+import Link from 'next/link';
 
 export default function Header() {
   return (
-    <header className="bg-blue-600 text-white shadow-lg">
-      <div className="container mx-auto flex items-center justify-between py-4 px-6">
+    <header className="bg-blue-600 text-white">
+      <div className="container mx-auto flex justify-between items-center py-4 px-6">
         {/* Logo */}
-        <div className="text-2xl font-bold">
-          <Link href="/" className="text-white">
-            Immigration Connect
-          </Link>
+        <div className="text-2xl font-bold cursor-pointer hover:text-blue-200 transition duration-300">
+          ImmigrationConnect
         </div>
 
         {/* Navigation Menu */}
-        <nav className="hidden md:flex space-x-6">
-          <Link href="/home" className="hover:text-blue-200">
+        <nav className="hidden md:flex space-x-8">
+          <Link
+            href="/home"
+            className="hover:text-blue-200 transition duration-300"
+          >
             Home
           </Link>
-          <Link href="/how-it-works" className="hover:text-blue-200">
+          <Link
+            href="/how-it-works"
+            className="hover:text-blue-200 transition duration-300"
+          >
             How It Works
           </Link>
-          <Link href="/services-overview" className="hover:text-blue-200">
+          <Link
+            href="/services-overview"
+            className="hover:text-blue-200 transition duration-300"
+          >
             Services
           </Link>
-          <Link href="/about-us" className="hover:text-blue-200">
+          <Link
+            href="/about-us"
+            className="hover:text-blue-200 transition duration-300"
+          >
             About Us
           </Link>
-          <Link href="/contact" className="hover:text-blue-200">
+          <Link
+            href="/contact"
+            className="hover:text-blue-200 transition duration-300"
+          >
             Contact
           </Link>
         </nav>
 
-        {/* Call to Action Buttons */}
-        <div className="flex items-center space-x-4">
+        {/* Sign Up / Login Buttons */}
+        <div className="hidden md:flex items-center space-x-4">
           <Link
             href="#signup"
             className="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded"
@@ -45,7 +58,63 @@ export default function Header() {
             Login
           </Link>
         </div>
+
+        {/* Mobile Menu Button */}
+        <div className="md:hidden flex items-center">
+          <button className="text-white focus:outline-none">
+            <svg
+              className="w-6 h-6"
+              fill="none"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+        </div>
       </div>
+
+      {/* Mobile Navigation */}
+      <nav className="md:hidden">
+        <div className="px-6 pt-4 pb-2 space-y-4">
+          <Link
+            href="/home"
+            className="block text-sm hover:text-blue-200 transition duration-300"
+          >
+            Home
+          </Link>
+          <Link
+            href="/how-it-works"
+            className="block text-sm hover:text-blue-200 transition duration-300"
+          >
+            How It Works
+          </Link>
+          <Link
+            href="/services-overview"
+            className="block text-sm hover:text-blue-200 transition duration-300"
+          >
+            Services
+          </Link>
+          <Link
+            href="/about-us"
+            className="block text-sm hover:text-blue-200 transition duration-300"
+          >
+            About Us
+          </Link>
+          <Link
+            href="/contact"
+            className="block text-sm hover:text-blue-200 transition duration-300"
+          >
+            Contact
+          </Link>
+          <button className="w-full bg-white text-blue-600 font-semibold py-2 px-6 rounded-full shadow-lg hover:bg-blue-100 transition duration-300">
+            Get Started
+          </button>
+        </div>
+      </nav>
     </header>
   );
 }
