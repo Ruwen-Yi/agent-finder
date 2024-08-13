@@ -110,9 +110,12 @@ export default function Header() {
           >
             Contact
           </Link>
-          <button className="w-full bg-white text-blue-600 font-semibold py-2 px-6 rounded-full shadow-lg hover:bg-blue-100 transition duration-300">
-            Get Started
-          </button>
+          <Link
+            href="#signIn"
+            className="block text-sm hover:text-blue-200 transition duration-300"
+          >
+            Sign In / Login
+          </Link>
         </div>
       </nav>
     </header>
