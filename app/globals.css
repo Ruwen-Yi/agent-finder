@@ -31,3 +31,8 @@ body {
     text-wrap: balance;
   }
 }
+
+/* Customize Input Field for Contact Page */
+.input-field {
+  @apply w-full p-4 border-2 border-transparent focus:border-blue-800 rounded-lg text-black transition duration-300 ease-in-out;
+}
