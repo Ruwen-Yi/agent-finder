@@ -13,7 +13,7 @@ export default function Hero() {
           you are.
         </p>
         {/* Call to Action Buttons */}
-        <div className="space-x-4">
+        <div className="flex flex-col space-y-4 justify-center md:flex-row md:space-y-0 md:space-x-4">
           <Link
             href="#find-agent"
             className="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg shadow-lg"
