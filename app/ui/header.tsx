@@ -22,7 +22,7 @@ export default function Header() {
           <Link href="/services-overview" className="hover:text-blue-200">
             Services
           </Link>
-          <Link href="#about" className="hover:text-blue-200">
+          <Link href="/about-us" className="hover:text-blue-200">
             About Us
           </Link>
           <Link href="#contact" className="hover:text-blue-200">
