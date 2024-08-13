@@ -25,7 +25,7 @@ export default function Header() {
           <Link href="/about-us" className="hover:text-blue-200">
             About Us
           </Link>
-          <Link href="#contact" className="hover:text-blue-200">
+          <Link href="/contact" className="hover:text-blue-200">
             Contact
           </Link>
         </nav>
