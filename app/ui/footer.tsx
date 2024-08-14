@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="bg-blue-900 text-white py-8">
+    <footer className="bg-blue-900 text-white py-8 px-20">
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
         {/* Quick Links */}
         <div>
