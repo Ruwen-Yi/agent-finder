@@ -1,4 +1,10 @@
-import Link from "next/link";
+import Link from 'next/link';
+import {
+  FaFacebookSquare,
+  FaInstagram,
+  FaLinkedinIn,
+  FaTwitterSquare,
+} from 'react-icons/fa';
 
 export default function Footer() {
   return (
@@ -34,7 +40,10 @@ export default function Footer() {
               </Link>
             </li>
             <li>
-              <Link href="/privacy-policy#terms-of-service" className="hover:text-blue-300">
+              <Link
+                href="/privacy-policy#terms-of-service"
+                className="hover:text-blue-300"
+              >
                 Terms of Service
               </Link>
             </li>
@@ -46,16 +55,16 @@ export default function Footer() {
           <h2 className="font-semibold text-lg mb-4">Follow Us</h2>
           <div className="flex space-x-4">
             <Link href="#" className="hover:text-blue-300">
-              <i className="fab fa-facebook-f"></i>
+              <FaFacebookSquare />
             </Link>
             <Link href="#" className="hover:text-blue-300">
-              <i className="fab fa-twitter"></i>
+              <FaTwitterSquare />
             </Link>
             <Link href="#" className="hover:text-blue-300">
-              <i className="fab fa-linkedin-in"></i>
+              <FaLinkedinIn />
             </Link>
             <Link href="#" className="hover:text-blue-300">
-              <i className="fab fa-instagram"></i>
+              <FaInstagram />
             </Link>
           </div>
         </div>
