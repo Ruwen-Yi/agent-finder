@@ -29,7 +29,7 @@ export default function Footer() {
               </Link>
             </li>
             <li>
-              <Link href="#" className="hover:text-blue-300">
+              <Link href="/privacy-policy" className="hover:text-blue-300">
                 Privacy Policy
               </Link>
             </li>
