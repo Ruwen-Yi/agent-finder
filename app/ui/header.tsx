@@ -5,9 +5,12 @@ export default function Header() {
     <header className="bg-blue-600 text-white">
       <div className="container mx-auto flex justify-between items-center py-4 px-6">
         {/* Logo */}
-        <div className="text-2xl font-bold cursor-pointer hover:text-blue-200 transition duration-300">
+        <Link
+          href={'/home'}
+          className="text-2xl font-bold cursor-pointer hover:text-blue-200 transition duration-300"
+        >
           ImmigrationConnect
-        </div>
+        </Link>
 
         {/* Navigation Menu */}
         <nav className="hidden md:flex space-x-8">
