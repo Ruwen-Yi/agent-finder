@@ -9,12 +9,12 @@ export default function Footer() {
           <h2 className="font-semibold text-lg mb-4">Quick Links</h2>
           <ul className="space-y-2">
             <li>
-              <Link href="#" className="hover:text-blue-300">
+              <Link href="/about-us" className="hover:text-blue-300">
                 About Us
               </Link>
             </li>
             <li>
-              <Link href="#" className="hover:text-blue-300">
+              <Link href="/services-overview" className="hover:text-blue-300">
                 Services
               </Link>
             </li>
@@ -24,7 +24,7 @@ export default function Footer() {
               </Link>
             </li>
             <li>
-              <Link href="#" className="hover:text-blue-300">
+              <Link href="/contact" className="hover:text-blue-300">
                 Contact Us
               </Link>
             </li>
