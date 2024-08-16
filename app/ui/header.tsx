@@ -114,7 +114,7 @@ export default function Header() {
             Contact
           </Link>
           <Link
-            href="#signIn"
+            href="/sign-in"
             className="block text-sm hover:text-blue-200 transition duration-300"
           >
             Sign In / Login
