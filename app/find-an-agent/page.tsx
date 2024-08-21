@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { FaMapMarkerAlt, FaPhone, FaEnvelope } from 'react-icons/fa';
-
+import Link from 'next/link';
 interface Agent {
   id: number;
   name: string;
@@ -53,14 +53,14 @@ export default function FindAgentPage () {
       <div className="w-full max-w-3xl mt-8">
         {agents.length > 0 ? (
           agents.map(agent => (
-            <div key={agent.id} className="bg-white rounded-lg shadow-md p-6 mb-4 flex items-center justify-between">
+            <Link href={`/find-an-agent/${agent.name.replace(' ','-').toLowerCase}`} key={agent.id} className="bg-white rounded-lg shadow-md p-6 mb-4 flex items-center justify-between">
               <div>
                 <h2 className="text-xl font-semibold text-blue-600">{agent.name}</h2>
                 <p className="text-gray-600"><FaMapMarkerAlt className="inline mr-2" />{agent.location} ({agent.distance})</p>
                 <p className="text-gray-600"><FaPhone className="inline mr-2" />{agent.phone}</p>
                 <p className="text-gray-600"><FaEnvelope className="inline mr-2" />{agent.email}</p>
               </div>
-            </div>
+            </Link>
           ))
         ) : (
           <p className="text-center text-gray-600">No agents found. Please enter a valid postcode.</p>
