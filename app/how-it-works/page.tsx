@@ -42,7 +42,7 @@ export default function HowItWorks() {
         </div>
         <div className="text-center mt-12">
           <Link
-            href="/home"
+            href="/find-an-agent"
             className="bg-blue-600 text-white font-semibold py-3 px-6 rounded-lg shadow-lg hover:bg-blue-700 transition duration-300"
           >
             Get Started
