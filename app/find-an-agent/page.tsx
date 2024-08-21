@@ -80,7 +80,7 @@ export default function FindAgentPage() {
           agents.map((agent) => (
             <Link
               href={`/find-an-agent/${
-                agent.name.replace(' ', '-').toLowerCase
+                agent.name.replaceAll(' ', '-').toLowerCase()
               }`}
               key={agent.id}
               className="bg-white rounded-lg shadow-md p-6 mb-4 flex items-center justify-between"
