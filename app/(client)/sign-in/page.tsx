@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import { useState } from 'react';
 import SignUpForm from '@/app/ui/(client)/sign-in/sign-up-form';
 import LoginForm from '@/app/ui/(client)/sign-in/login-form';
 
