@@ -11,11 +11,7 @@ export default function SignIn() {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-blue-50">
-      <div
-        className={`w-full max-w-md p-8 bg-white rounded-lg shadow-lg transition-transform duration-500 ${
-          isSignUp ? 'transform translate-x-0' : 'transform translate-x-full'
-        }`}
-      >
+      <div className="w-full max-w-md p-8 bg-white rounded-lg shadow-lg">
         <h1 className="text-2xl font-semibold text-blue-600 mb-4">
           {isSignUp ? 'Sign Up' : 'Log In'}
         </h1>
