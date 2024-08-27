@@ -1,8 +1,8 @@
 'use client';
 
 import React, { useState } from 'react';
-import SignUpForm from '@/app/ui/sign-in/sign-up-form';
-import LoginForm from '@/app/ui/sign-in/login-form';
+import SignUpForm from '@/app/ui/(client)/sign-in/sign-up-form';
+import LoginForm from '@/app/ui/(client)/sign-in/login-form';
 
 export default function SignIn() {
   const [isSignUp, setIsSignUp] = useState(true);
