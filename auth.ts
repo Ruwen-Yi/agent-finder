@@ -19,3 +19,20 @@ declare module 'next-auth/adapters' {
 declare module 'next-auth/jwt' {
   interface JWT extends UserType {}
 }
+
+const authOptions = {
+    // Authentication providers list
+    providers: [
+    ],
+    // Custom authentication callbacks 
+    callbacks: {
+    },
+    // Custom authentication-related pages
+    pages: {
+    },
+    // Configure session options
+    session: {
+    },
+  } satisfies NextAuthConfig;
+  
+  export const { handlers, auth, signIn, signOut } = NextAuth(authOptions);
