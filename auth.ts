@@ -20,19 +20,35 @@ declare module 'next-auth/jwt' {
   interface JWT extends UserType {}
 }
 
+const userExample = {
+  id: 'id-333',
+  name: 'user-name',
+  email: 'email@connect.com',
+  avatar: 'avatar',
+  premiumSubscription: false,
+  accessToken: 'actkl333',
+  refreshToken: 'reftkl333',
+  subId: 'sub-333',
+};
 const authOptions = {
-    // Authentication providers list
-    providers: [
-    ],
-    // Custom authentication callbacks 
-    callbacks: {
-    },
-    // Custom authentication-related pages
-    pages: {
-    },
-    // Configure session options
-    session: {
-    },
-  } satisfies NextAuthConfig;
-  
-  export const { handlers, auth, signIn, signOut } = NextAuth(authOptions);
+  // Authentication providers list
+  providers: [
+    CredentialsProvider({
+      id: 'credentials',
+      name: 'credentials',
+      authorize: async (credentials) => {
+        return new Promise((res) => {
+          res(userExample);
+        });
+      },
+    }),
+  ],
+  // Custom authentication callbacks
+  callbacks: {},
+  // Custom authentication-related pages
+  pages: {},
+  // Configure session options
+  session: {},
+} satisfies NextAuthConfig;
+
+export const { handlers, auth, signIn, signOut } = NextAuth(authOptions);
