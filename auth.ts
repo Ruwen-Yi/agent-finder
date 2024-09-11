@@ -44,7 +44,40 @@ const authOptions = {
     }),
   ],
   // Custom authentication callbacks
-  callbacks: {},
+  callbacks: {
+    async jwt({ token, user }: { token: JWT; user: User }) {
+      // Add the user properties to the token after signing in
+      if (user) {
+        token.id = user.id as string;
+        token.avatar = user.avatar;
+        token.name = user.name;
+        token.email = user.email;
+        token.premiumSubscription = user.premiumSubscription;
+        token.accessToken = user.accessToken;
+        token.subId = user.subId;
+        token.refreshToken = user.refreshToken;
+      }
+      return token;
+    },
+    
+    async session({ session, token }: { session: Session; token: JWT }) {
+      // Create a user object with token properties
+      const userObject: AdapterUser = {
+        id: token.id,
+        avatar: token.avatar,
+        name: token.name,
+        premiumSubscription: token.premiumSubscription,
+        accessToken: token.accessToken,
+        subId: token.subId,
+        refreshToken: token.refreshToken,
+        email: token.email ? token.email : '', // Ensure email is not undefined
+        emailVerified: null, // Required property, set to null if not used
+      };
+      // Add the user object to the session
+      session.user = userObject;
+      return session;
+    },
+  },
   // Custom authentication-related pages
   pages: {},
   // Configure session options
