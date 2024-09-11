@@ -15,6 +15,7 @@ export default function LoginForm() {
 
   useEffect(() => {
     if (authenticated) {
+      alert('successfully authenticated');
       // Redirect to previous page or home page
       const next = searchParams.get('next') || '/home';
       window.location.href = next;
