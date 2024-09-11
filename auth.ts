@@ -79,7 +79,9 @@ const authOptions = {
     },
   },
   // Custom authentication-related pages
-  pages: {},
+  pages: {
+    signIn: "/signin", // Custom sign-in page
+  },
   // Configure session options
   session: {},
 } satisfies NextAuthConfig;
