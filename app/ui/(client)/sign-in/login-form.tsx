@@ -17,7 +17,7 @@ export default function LoginForm() {
     if (authenticated) {
       alert('successfully authenticated');
       // Redirect to previous page or home page
-      const next = searchParams.get('next') || '/home';
+      const next = '/dashboard';
       window.location.href = next;
     }
   }, [authenticated]);
