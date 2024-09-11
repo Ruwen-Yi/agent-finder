@@ -83,7 +83,9 @@ const authOptions = {
     signIn: "/signin", // Custom sign-in page
   },
   // Configure session options
-  session: {},
+  session: {
+    strategy: "jwt",
+  },
 } satisfies NextAuthConfig;
 
 export const { handlers, auth, signIn, signOut } = NextAuth(authOptions);
