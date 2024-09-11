@@ -80,11 +80,11 @@ const authOptions = {
   },
   // Custom authentication-related pages
   pages: {
-    signIn: "/signin", // Custom sign-in page
+    signIn: "/signin", // Specify the custom sign-in page route
   },
   // Configure session options
   session: {
-    strategy: "jwt",
+    strategy: "jwt", // Session data is encoded and stored in a JWT
   },
 } satisfies NextAuthConfig;
 
