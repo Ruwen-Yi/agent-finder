@@ -19,7 +19,7 @@ export default function AgentProfile() {
       getUserProfile(session.user.accessToken);
     } else {
       // Redirect to `/signin` if no access token or no session
-      router.push('/signin');
+      router.push('/sign-in');
     }
   }, []);
 
