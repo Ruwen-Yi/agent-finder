@@ -85,6 +85,7 @@ const authOptions = {
   // Configure session options
   session: {
     strategy: "jwt", // Session data is encoded and stored in a JWT
+    maxAge: 10, // 10 sec
   },
 } satisfies NextAuthConfig;
 
