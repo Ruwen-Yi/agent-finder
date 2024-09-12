@@ -80,7 +80,7 @@ const authOptions = {
   },
   // Custom authentication-related pages
   pages: {
-    signIn: "/signin", // Specify the custom sign-in page route
+    signIn: "/sign-in", // Specify the custom sign-in page route
   },
   // Configure session options
   session: {
