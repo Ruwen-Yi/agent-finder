@@ -22,14 +22,15 @@ declare module 'next-auth/jwt' {
 
 const userExample = {
   id: 'id-333',
-  name: 'user-name',
-  email: 'email@connect.com',
+  name: 'Jane',
+  email: 'example@connect.com',
   avatar: 'avatar',
   premiumSubscription: false,
   accessToken: 'actkl333',
   refreshToken: 'reftkl333',
   subId: 'sub-333',
 };
+
 const authOptions = {
   // Authentication providers list
   providers: [
