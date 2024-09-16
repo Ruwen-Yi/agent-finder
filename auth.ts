@@ -37,9 +37,12 @@ const authOptions = {
       id: 'credentials',
       name: 'credentials',
       authorize: async (credentials) => {
-        return new Promise((res) => {
-          res(userExample);
-        });
+        const { username, password } = credentials;
+        return username === 'example@connect.com' && password === '1234'
+          ? new Promise((res) => {
+              res(userExample);
+            })
+          : null;
       },
     }),
   ],
@@ -59,7 +62,7 @@ const authOptions = {
       }
       return token;
     },
-    
+
     async session({ session, token }: { session: Session; token: JWT }) {
       // Create a user object with token properties
       const userObject: AdapterUser = {
@@ -80,11 +83,11 @@ const authOptions = {
   },
   // Custom authentication-related pages
   pages: {
-    signIn: "/sign-in", // Specify the custom sign-in page route
+    signIn: '/sign-in', // Specify the custom sign-in page route
   },
   // Configure session options
   session: {
-    strategy: "jwt", // Session data is encoded and stored in a JWT
+    strategy: 'jwt', // Session data is encoded and stored in a JWT
     maxAge: 10, // 10 sec
   },
 } satisfies NextAuthConfig;
