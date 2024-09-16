@@ -1,15 +1,11 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Link from 'next/link';
-import { useSearchParams } from 'next/navigation';
 import { FaGoogle, FaFacebook, FaLinkedin } from 'react-icons/fa';
 
 export default function LoginForm() {
-  const searchParams = useSearchParams();
-
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [username, setUsername] = useState('example@connect.com');
+  const [password, setPassword] = useState('1234');
   const [authenticated, setAuthenticated] = useState(false);
   const [error, setError] = useState('');
 
