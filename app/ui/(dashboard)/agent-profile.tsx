@@ -23,6 +23,7 @@ export default function AgentProfile() {
     }
   }, []);
 
+  // This function can be used to fetch dynamic data in the future
   const getUserProfile = (token: string) => {
     setLoadingProfile(true);
     fetch(`${baseUrl}/auth/user_profile`, {
