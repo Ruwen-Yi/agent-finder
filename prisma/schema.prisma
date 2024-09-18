@@ -21,9 +21,9 @@ model Agent {
   phone           String
   bio             String
   address         Address?
-  services        Service[]
-  specializations Specialization[]
-  comments        Comment[]
+  services        Service[] // An agent has one or more services
+  specializations Specialization[] // An agent has one or more specializations
+  comments        Comment[] // An agent has one or more comments
 }
 
 model Address {
@@ -34,7 +34,7 @@ model Address {
   state   String
   postal  Int
   agent   Agent   @relation(fields: [agentId], references: [id])
-  agentId String  @unique
+  agentId String  @unique // An address maps to a unique agent
 }
 
 model Service {
@@ -43,28 +43,36 @@ model Service {
   servicePrice Float
   serviceIntro String
   agent        Agent  @relation(fields: [agentId], references: [id])
-  agentId      String
+  agentId      String // A service maps to a unique agent
 }
 
 model Specialization {
   id                 String @id @default(cuid())
-  specializationName String
+  specializationName SpecializationName @default(Visa_Applications)
   agent              Agent  @relation(fields: [agentId], references: [id])
-  agentId            String
+  agentId            String // A specialization maps to a unique agent
 }
 
 model Comment {
   id       String @id @default(cuid())
   content  String
+
   agent    Agent  @relation(fields: [agentId], references: [id])
-  agentId  String
+  agentId  String // A comment maps to a unique agent
   client   Client @relation(fields: [clientId], references: [id])
-  clientId String
+  clientId String // A comment maps to a unique client
 }
 
 model Client {
   id       String    @id @default(cuid())
   name     String
   email    String
-  comments Comment[]
+  comments Comment[] // A client has zero or more comments
+}
+
+enum SpecializationName {
+  Visa_Applications
+  Permanent_Residency
+  Citizenship
+  Family_Sponsorship
 }
