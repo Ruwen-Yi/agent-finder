@@ -9,7 +9,62 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url = env("POSTGRES_PRISMA_URL") // uses connection pooling
+  provider  = "postgresql"
+  url       = env("POSTGRES_PRISMA_URL") // uses connection pooling
   directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
+}
+
+model Agent {
+  id              String           @id @default(cuid())
+  name            String
+  email           String           @unique
+  phone           String
+  bio             String
+  address         Address?
+  services        Service[]
+  specializations Specialization[]
+  comments        Comment[]
+}
+
+model Address {
+  id      String  @id @default(cuid())
+  unit    String?
+  street  String
+  city    String
+  state   String
+  postal  Int
+  agent   Agent   @relation(fields: [agentId], references: [id])
+  agentId String  @unique
+}
+
+model Service {
+  id           String @id @default(cuid())
+  serviceName  String
+  servicePrice Float
+  serviceIntro String
+  agent        Agent  @relation(fields: [agentId], references: [id])
+  agentId      String
+}
+
+model Specialization {
+  id                 String @id @default(cuid())
+  specializationName String
+  agent              Agent  @relation(fields: [agentId], references: [id])
+  agentId            String
+}
+
+model Comment {
+  id       String @id @default(cuid())
+  content  String
+  agent    Agent  @relation(fields: [agentId], references: [id])
+  agentId  String
+  client   Client @relation(fields: [clientId], references: [id])
+  clientId String
+}
+
+model Client {
+  id       String    @id @default(cuid())
+  name     String
+  email    String
+  comments Comment[]
 }
