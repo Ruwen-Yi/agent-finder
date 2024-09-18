@@ -43,24 +43,25 @@ model Service {
   servicePrice Float
   serviceIntro String
   agent        Agent  @relation(fields: [agentId], references: [id])
-  agentId      String // A service maps to a unique agent
+  agentId      String // A service must map to an agent
+                      // Multiple services can map to the same agentId (many to one)
 }
 
 model Specialization {
-  id                 String @id @default(cuid())
+  id                 String             @id @default(cuid())
   specializationName SpecializationName @default(Visa_Applications)
-  agent              Agent  @relation(fields: [agentId], references: [id])
-  agentId            String // A specialization maps to a unique agent
+  agent              Agent              @relation(fields: [agentId], references: [id])
+  agentId            String // A specialization must map to an agent
 }
 
 model Comment {
-  id       String @id @default(cuid())
-  content  String
+  id      String @id @default(cuid())
+  content String
 
   agent    Agent  @relation(fields: [agentId], references: [id])
-  agentId  String // A comment maps to a unique agent
+  agentId  String // A comment must map to an agent
   client   Client @relation(fields: [clientId], references: [id])
-  clientId String // A comment maps to a unique client
+  clientId String // A comment must map to a client
 }
 
 model Client {
