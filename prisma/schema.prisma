@@ -72,11 +72,13 @@ enum SpecializationName {
 }
 
 model Comment {
-  id       Int     @id @default(autoincrement())
-  content  String
+  id        Int      @id @default(autoincrement())
+  content   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
-  agent    Agent  @relation(fields: [agentId], references: [id])
-  agentId  String // A comment must map to an agent
-  client   Client @relation(fields: [clientId], references: [id])
-  clientId String // A comment must map to a client
+  agent     Agent    @relation(fields: [agentId], references: [id])
+  agentId   String   // A comment must map to an agent
+  client    Client   @relation(fields: [clientId], references: [id])
+  clientId  String   // A comment must map to a client
 }
