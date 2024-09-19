@@ -14,6 +14,13 @@ datasource db {
   directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
 }
 
+model Client {
+  id       String    @id @default(cuid())
+  name     String
+  email    String
+  comments Comment[] // A client has zero or more comments
+}
+
 model Agent {
   id              String           @id @default(cuid())
   name            String
@@ -27,48 +34,34 @@ model Agent {
 }
 
 model Address {
-  id      String  @id @default(cuid())
+  id      Int     @id @default(autoincrement())
   unit    String?
   street  String
   city    String
   state   String
   postal  Int
+  
   agent   Agent   @relation(fields: [agentId], references: [id])
   agentId String  @unique // An address maps to a unique agent
 }
 
 model Service {
-  id           String @id @default(cuid())
+  id           Int    @id @default(autoincrement())
   serviceName  String
   servicePrice Float
   serviceIntro String
+  
   agent        Agent  @relation(fields: [agentId], references: [id])
   agentId      String // A service must map to an agent
-                      // Multiple services can map to the same agentId (many to one)
+  // Multiple services can map to the same agentId (many to one)
 }
 
 model Specialization {
-  id                 String             @id @default(cuid())
+  id                 Int                @id @default(autoincrement())
   specializationName SpecializationName @default(Visa_Applications)
+  
   agent              Agent              @relation(fields: [agentId], references: [id])
   agentId            String // A specialization must map to an agent
-}
-
-model Comment {
-  id      String @id @default(cuid())
-  content String
-
-  agent    Agent  @relation(fields: [agentId], references: [id])
-  agentId  String // A comment must map to an agent
-  client   Client @relation(fields: [clientId], references: [id])
-  clientId String // A comment must map to a client
-}
-
-model Client {
-  id       String    @id @default(cuid())
-  name     String
-  email    String
-  comments Comment[] // A client has zero or more comments
 }
 
 enum SpecializationName {
@@ -76,4 +69,14 @@ enum SpecializationName {
   Permanent_Residency
   Citizenship
   Family_Sponsorship
+}
+
+model Comment {
+  id       Int     @id @default(autoincrement())
+  content  String
+
+  agent    Agent  @relation(fields: [agentId], references: [id])
+  agentId  String // A comment must map to an agent
+  client   Client @relation(fields: [clientId], references: [id])
+  clientId String // A comment must map to a client
 }
