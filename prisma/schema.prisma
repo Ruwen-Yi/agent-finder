@@ -18,6 +18,7 @@ model Client {
   id       String    @id @default(cuid())
   name     String
   email    String
+  imageUrl String
   comments Comment[] // A client has zero or more comments
 }
 
@@ -27,6 +28,7 @@ model Agent {
   email           String           @unique
   phone           String
   bio             String
+  imageUrl        String
   address         Address?
   services        Service[] // An agent has one or more services
   specializations Specialization[] // An agent has one or more specializations
@@ -39,7 +41,7 @@ model Address {
   street  String
   city    String
   state   String
-  postal  Int
+  postal  String
   
   agent   Agent   @relation(fields: [agentId], references: [id])
   agentId String  @unique // An address maps to a unique agent
@@ -57,18 +59,11 @@ model Service {
 }
 
 model Specialization {
-  id                 Int                @id @default(autoincrement())
-  specializationName SpecializationName @default(Visa_Applications)
+  id                 Int    @id @default(autoincrement())
+  specializationName String
   
-  agent              Agent              @relation(fields: [agentId], references: [id])
+  agent              Agent  @relation(fields: [agentId], references: [id])
   agentId            String // A specialization must map to an agent
-}
-
-enum SpecializationName {
-  Visa_Applications
-  Permanent_Residency
-  Citizenship
-  Family_Sponsorship
 }
 
 model Comment {
