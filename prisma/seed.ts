@@ -2,9 +2,27 @@
 
 import { PrismaClient } from '@prisma/client'
 
-const prisma = new PrismaClient()
+import {
+    agents,
+    clients,
+    specializations,
+    services,
+    comments,
+  } from '@/app/lib/placeholder-data'
+
+const prisma = new PrismaClient();
 
 async function seedClients() {
+  const newClientCount = await prisma.client.createMany({
+    data: clients.map(client=>({
+        id:client.id,
+        name:client.name,
+        email:client.email
+    })),
+    skipDuplicates: true
+  })
+
+  console.log(`${newClientCount.count} client data is created!`)
 }
 
 async function seedAgents() {
