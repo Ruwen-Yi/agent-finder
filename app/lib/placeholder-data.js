@@ -5,13 +5,13 @@ const agents = [
     email: 'delba@oliveira.com',
     phone: '(02)85692318',
     bio: 'Experienced Agent. Assistance with wide range of visa application.',
-    image_url: '/avatar/delba-de-oliveira.png',
+    imageUrl: '/avatar/delba-de-oliveira.png',
 
     address: {
       street: '65 Woodlands Avenue',
       city: 'Camberwell',
       state: 'Victoria',
-      zip_code: '3124'
+      postal: '3124'
     },
   },
   {
@@ -19,13 +19,14 @@ const agents = [
     name: 'Lee Robinson',
     email: 'lee@robinson.com',
     phone: '0467890232',
-    image_url: '/avatar/lee-robinson.png',
+    bio: 'Experienced Agent. Assistance with wide range of visa application.',
+    imageUrl: '/avatar/lee-robinson.png',
 
     address: {
       street: '1 Myrtle Street',
       city: 'Bowral',
       state: 'New South Wales',
-      zip_code: '3730'
+      postal: '3730'
     }
   },
   {
@@ -33,13 +34,14 @@ const agents = [
     name: 'Hector Simpson',
     email: 'hector@simpson.com',
     phone: '0467890233',
-    image_url: '/avatar/hector-simpson.png',
+    bio: 'Experienced Agent. Assistance with wide range of visa application.',
+    imageUrl: '/avatar/hector-simpson.png',
 
     address: {
       street: '27 Hay Point Road',
       city: 'Alligator Creek',
       state: 'Queensland',
-      zip_code: '4740'
+      postal: '4740'
     }
   },
   {
@@ -47,13 +49,14 @@ const agents = [
     name: 'Steven Tey',
     email: 'steven@tey.com',
     phone: '0467890234',
-    image_url: '/avatar/steven-tey.png',
+    bio: 'Experienced Agent. Assistance with wide range of visa application.',
+    imageUrl: '/avatar/steven-tey.png',
 
     address: {
       street: '99 Cedar St',
       city: 'Wynnum',
       state: 'Queensland',
-      zip_code: '4178'
+      postal: '4178'
     }
   },
   {
@@ -61,14 +64,15 @@ const agents = [
     name: 'Steph Dietz',
     email: 'steph@dietz.com',
     phone: '0467890235',
-    image_url: '/avatar/steph-dietz.png',
+    bio: 'Experienced Agent. Assistance with wide range of visa application.',
+    imageUrl: '/avatar/steph-dietz.png',
 
     address: {
       unit: '906A',
       street: '305 Murray Street',
       city: 'Perth',
       state: 'West Australia',
-      zip_code: '6000'
+      postal: '6000'
     }
   },
 ];
@@ -78,71 +82,89 @@ const clients = [
     id: '76d65c26-f784-44a2-ac19-586678f7c2f2',
     name: 'Michael Novotny',
     email: 'michael@novotny.com',
-    image_url: '/avatar/michael-novotny.png',
+    imageUrl: '/avatar/michael-novotny.png',
   },
   {
     id: 'd6e15727-9fe1-4961-8c5b-ea44a9bd81aa',
     name: 'Evil Rabbit',
     email: 'evil@rabbit.com',
-    image_url: '/avatar/evil-rabbit.png',
+    imageUrl: '/avatar/evil-rabbit.png',
   },
   {
     id: '126eed9c-c90c-4ef6-a4a8-fcf7408d3c66',
     name: 'Emil Kowalski',
     email: 'emil@kowalski.com',
-    image_url: '/avatar/emil-kowalski.png',
+    imageUrl: '/avatar/emil-kowalski.png',
   },
   {
     id: 'CC27C14A-0ACF-4F4A-A6C9-D45682C144B9',
     name: 'Amy Burns',
     email: 'amy@burns.com',
-    image_url: '/avatar/amy-burns.png',
+    imageUrl: '/avatar/amy-burns.png',
   },
   {
     id: '13D07535-C59E-4157-A011-F8D2EF4E0CBB',
     name: 'Balazs Orban',
     email: 'balazs@orban.com',
-    image_url: '/avatar/balazs-orban.png',
+    imageUrl: '/avatar/balazs-orban.png',
   },
 ]
 
 const services = [
   {
-    service_name: 'Working Visa Application',
-    service_price: 500,
-    service_intro: '485 working visa'
+    serviceName: 'Working Visa Application',
+    servicePrice: 500,
+    serviceIntro: '485 working visa'
   },
   {
-    service_name: 'Citizenship Application',
-    service_price: 690,
-    service_intro: 'Citizenship'
+    serviceName: 'Student Visa Application',
+    servicePrice: 300,
+    serviceIntro: '500 student visa'
   },
   {
-    service_name: 'Student Visa Application',
-    service_price: 300,
-    service_intro: '500 student visa'
+    serviceName: 'Permanent Residency Application',
+    servicePrice: 570,
+    serviceIntro: '485 working visa'
   },
   {
-    service_name: 'Permanent Residency Application',
-    service_price: 570,
-    service_intro: '485 working visa'
+    serviceName: 'Citizenship Application',
+    servicePrice: 690,
+    serviceIntro: 'Citizenship'
   },
 ]
 
 const specializations = [
-  'Visa Applications',
-  'Permanent Residency',
-  'Citizenship',
-  'Family Sponsorship'
+  {specializationName: 'Visa Applications'},
+  {specializationName: 'Family Sponsorship'},
+  {specializationName: 'Permanent Residency'},
+  {specializationName: 'Citizenship'},
+]
+
+const commentContent = [
+  { "content": "The service was excellent and professional." },
+  { "content": "They provided clear and helpful advice throughout the process." },
+  { "content": "I had a smooth experience with the immigration agent." },
+  { "content": "The team was responsive and answered all my questions quickly." },
+  { "content": "They made the visa application process stress-free." },
+  { "content": "Very knowledgeable staff and great customer service." },
+  { "content": "I highly recommend their services for immigration needs." },
+  { "content": "They handled my case with care and attention to detail." },
+  { "content": "The agent was friendly and explained everything clearly." },
+  { "content": "Their support made the whole process easier than expected." },
+  { "content": "I’m thankful for their guidance and expertise." },
+  { "content": "They helped me understand the complex requirements." },
+  { "content": "The service was fast and reliable." },
+  { "content": "I appreciate their professionalism and dedication." },
+  { "content": "The immigration agent went above and beyond to assist me." }
 ]
 
 const comments = Array.from({ length: 30 }).map((_, index) => {
   let offset = Math.floor(index / 10);
 
   return {
-    content: `Great service and excellent advice for my ${index + 2} applications.`,
-    agent_id: agents[index % 5].id,
-    client_id: clients[(index + offset) % 5].id
+    content: commentContent[index % 15].content,
+    agentId: agents[index % 5].id,
+    clientId: clients[(index + offset) % 5].id
   }
 })
 
