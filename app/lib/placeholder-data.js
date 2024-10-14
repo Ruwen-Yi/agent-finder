@@ -113,17 +113,27 @@ const services = [
 		service_intro: '485 working visa'
 	},
 	{
-		service_name: 'Working Visa Application',
-		service_price: 500,
+		service_name: 'Citizenship Application',
+		service_price: 690,
+		service_intro: 'Citizenship'
+	},
+    {
+		service_name: 'Student Visa Application',
+		service_price: 300,
+		service_intro: '500 student visa'
+	},
+    {
+		service_name: 'Permanent Residency Application',
+		service_price: 570,
 		service_intro: '485 working visa'
 	},
 ]
 
 const specializations = [
-	'Visa_Applications',
-	'Permanent_Residency',
+	'Visa Applications',
+	'Permanent Residency',
 	'Citizenship',
-	'Family_Sponsorship'
+	'Family Sponsorship'
 ]
 
 
