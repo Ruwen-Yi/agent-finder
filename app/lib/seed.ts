@@ -57,7 +57,7 @@ async function seedAgents() {
   //     skipDuplicates: true,
   //   });
 
-  console.log(`${agents.length} agents data is created!`);
+  console.log(`${agents.length} agents data are existing in database!`);
 }
 
 async function seedComments() {
