@@ -1,7 +1,5 @@
-// Run the code: npx ts-node database.ts
-
-import { PrismaClient } from '@prisma/client';
-
+// Run the code by accessing http://localhost:3000/seed
+import prisma from '@/app/lib/prisma';
 import {
   agents,
   clients,
@@ -9,8 +7,6 @@ import {
   services,
   comments,
 } from '@/app/lib/placeholder-data';
-
-const prisma = new PrismaClient();
 
 async function seedClients() {
   const newClientsCount = await prisma.client.createMany({
@@ -73,19 +69,17 @@ async function seedComments() {
   console.log(`${newCommentCount.count} comments data is created!`);
 }
 
-async function seedDatabase() {
-  await seedClients();
-  await seedAgents();
-  await seedComments();
-}
+export default async function seedData() {
+  try {
+    await seedClients();
+    await seedAgents();
+    await seedComments();
 
-export function main() {
-  seedDatabase()
-    .then(async () => {
-      await prisma.$disconnect();
-    })
-    .catch(async (e) => {
-      console.error(e);
-      await prisma.$disconnect();
-    });
+    await prisma.$disconnect();
+    return 'You successfully seeded the database!';
+  } catch (e) {
+    console.error(e);
+    await prisma.$disconnect();
+    return 'Something went wrong when seeding the database!';
+  }
 }
