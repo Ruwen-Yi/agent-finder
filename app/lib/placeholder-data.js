@@ -162,6 +162,7 @@ const comments = Array.from({ length: 30 }).map((_, index) => {
   let offset = Math.floor(index / 10);
 
   return {
+		id: index,
     content: commentContent[index % 15].content,
     agentId: agents[index % 5].id,
     clientId: clients[(index + offset) % 5].id
