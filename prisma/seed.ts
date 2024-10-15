@@ -22,45 +22,70 @@ async function seedClients() {
 }
 
 async function seedAgents() {
-  const newAgentsCount = await prisma.agent.createMany({
-    data: agents.map((agent,index) => ({
-      ...agent,
-      address: {
-        create: {...agent.address},
-      },
-      services: {
-        create: [...services.slice(0, (index % 5) + 1)]
-      },
-      specializations: {
-        create: [...specializations.slice(0, (index % 5) + 1)]
-      }
-    })),
-    skipDuplicates: true,
-  });
+  agents.map(
+    async (agent, index) =>
+      await prisma.agent.upsert({
+        where: { id: agent.id },
+        update: {},
+        create: {
+          ...agent,
+          address: {
+            create: { ...agent.address },
+          },
+          services: {
+            create: [...services.slice(0, (index % 5) + 1)],
+          },
+          specializations: {
+            create: [...specializations.slice(0, (index % 5) + 1)],
+          },
+        },
+        include: {
+          address: true,
+          services: true,
+          specializations: true,
+        },
+      })
+  );
+  //     data: agents.map((agent, index) => ({
+  //       ...agent,
+  //       address: {
+  //         create: { ...agent.address },
+  //       },
+  //       services: {
+  //         create: [...services.slice(0, (index % 5) + 1)],
+  //       },
+  //       specializations: {
+  //         create: [...specializations.slice(0, (index % 5) + 1)],
+  //       },
+  //     })),
+  //     skipDuplicates: true,
+  //   });
 
-  console.log(`${newAgentsCount.count} agents data is created!`);
+  console.log(`${agents.length} agents data is created!`);
 }
 
 async function seedComments() {
-  const newCommentsCount = await prisma.comment.createMany({
-    data:comments
-  })
+  let newCommentCount = await prisma.comment.createMany({
+    data: comments,
+    skipDuplicates: true,
+  });
 
-  console.log(`${newCommentsCount.count} comments data is created!`);
+  console.log(`${newCommentCount.count} comments data is created!`);
 }
 
-async function main() {
+async function seedDatabase() {
   await seedClients();
   await seedAgents();
   await seedComments();
 }
 
-main()
-  .then(async () => {
-    await prisma.$disconnect();
-  })
-  .catch(async (e) => {
-    console.error(e);
-    await prisma.$disconnect();
-    process.exit(1);
-  });
+export function main() {
+  seedDatabase()
+    .then(async () => {
+      await prisma.$disconnect();
+    })
+    .catch(async (e) => {
+      console.error(e);
+      await prisma.$disconnect();
+    });
+}
