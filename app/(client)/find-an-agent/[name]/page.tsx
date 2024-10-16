@@ -70,8 +70,13 @@ const agentData: AgentData = {
   },
 };
 
-export default async function AgentIntroduction() {
-  console.log(await fetchAgent('3958dc9e-712f-4377-85e9-fec4b6a6442a'));
+export default async function AgentIntroduction({
+  params,
+}: {
+  params: { name: string };
+}) {
+  const agent = await fetchAgent(params.name.split('-').slice(1).join('-'));
+  if (!agent) return ('agent not found');
 
   return (
     <div className="max-w-7xl mx-auto p-6 space-y-12">
@@ -84,7 +89,7 @@ export default async function AgentIntroduction() {
         />
         <div className="text-center md:text-left mt-4 md:mt-0">
           <h2 className="text-2xl font-bold text-blue-700">
-            {agentData.name}, {agentData.title}
+            {agent.name}, {agentData.title}
           </h2>
           <p className="text-blue-600">{agentData.location}</p>
           <p className="text-blue-600 mt-2">
@@ -110,9 +115,9 @@ export default async function AgentIntroduction() {
       {/* About the Agent Section */}
       <div className="bg-white p-6 rounded-lg shadow-lg">
         <h3 className="text-xl font-semibold text-blue-700 mb-4">
-          About {agentData.name}
+          About {agent.name}
         </h3>
-        <p className="text-blue-600">{agentData.bio}</p>
+        <p className="text-blue-600">{agent.bio}</p>
         <h4 className="text-lg font-semibold text-blue-700 mt-6">
           Specializations:
         </h4>
