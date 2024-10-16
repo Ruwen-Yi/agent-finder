@@ -35,11 +35,6 @@ async function seedAgents() {
             create: [...specializations.slice(0, (index % 5) + 1)],
           },
         },
-        include: {
-          address: true,
-          services: true,
-          specializations: true,
-        },
       })
   );
   //     data: agents.map((agent, index) => ({
