@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { FaMapMarkerAlt, FaPhone, FaEnvelope } from 'react-icons/fa';
 import Link from 'next/link';
 interface Agent {
-  id: number;
+  id: string;
   name: string;
   location: string;
   phone: string;
@@ -14,7 +14,7 @@ interface Agent {
 
 const agentsData: Agent[] = [
   {
-    id: 1,
+    id: '3958dc9e-712f-4377-85e9-fec4b6a6442a',
     name: 'John Doe',
     location: 'Central City',
     phone: '123-456-7890',
@@ -22,7 +22,7 @@ const agentsData: Agent[] = [
     distance: '5 km',
   },
   {
-    id: 2,
+    id: '3958dc9e-712f-4377-85e9-fec4b6a6442a',
     name: 'Jane Smith',
     location: 'Eastville',
     phone: '234-567-8901',
@@ -30,7 +30,7 @@ const agentsData: Agent[] = [
     distance: '10 km',
   },
   {
-    id: 3,
+    id: '3958dc9e-712f-4377-85e9-fec4b6a6442a',
     name: 'Alice Johnson',
     location: 'Westtown',
     phone: '345-678-9012',
@@ -79,8 +79,8 @@ export default function FindAgentPage() {
         {agents.length > 0 ? (
           agents.map((agent) => (
             <Link
-              href={`/find-an-agent/${
-                agent.name.replaceAll(' ', '-').toLowerCase()
+              href={`/find-an-agent/${agent.name.replaceAll(' ', '')}-${
+                agent.id
               }`}
               key={agent.id}
               className="bg-white rounded-lg shadow-md p-6 mb-4 flex items-center justify-between"

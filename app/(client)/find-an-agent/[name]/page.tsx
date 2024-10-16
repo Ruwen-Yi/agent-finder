@@ -1,4 +1,5 @@
 import React from 'react';
+import { fetchAgent } from '@/app/lib/data';
 
 type AgentData = {
   name: string;
@@ -69,7 +70,9 @@ const agentData: AgentData = {
   },
 };
 
-export default function AgentIntroduction() {
+export default async function AgentIntroduction() {
+  console.log(await fetchAgent('3958dc9e-712f-4377-85e9-fec4b6a6442a'));
+
   return (
     <div className="max-w-7xl mx-auto p-6 space-y-12">
       {/* Agent Profile Section */}
