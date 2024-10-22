@@ -76,6 +76,7 @@ export default async function AgentIntroduction({
   params: { name: string };
 }) {
   const agent = await fetchAgent(params.name.split('-').slice(1).join('-'));
+  console.log(agent);
   if (!agent) return ('agent not found');
 
   return (
@@ -122,8 +123,8 @@ export default async function AgentIntroduction({
           Specializations:
         </h4>
         <ul className="list-disc list-inside text-blue-600 mt-2">
-          {agentData.specializations.map((specialization, index) => (
-            <li key={index}>{specialization}</li>
+          {agent.specializations.map((specialization, index) => (
+            <li key={index}>{specialization.specializationName}</li>
           ))}
         </ul>
         <h4 className="text-lg font-semibold text-blue-700 mt-6">
@@ -142,12 +143,12 @@ export default async function AgentIntroduction({
           Services Offered
         </h3>
         <div className="grid gap-4 md:grid-cols-2">
-          {agentData.services.map((service, index) => (
+          {agent.services.map((service, index) => (
             <div key={index} className="p-4 bg-white rounded-md shadow-md">
-              <h4 className="text-blue-700 font-semibold">{service.name}</h4>
-              <p className="text-blue-600">{service.description}</p>
+              <h4 className="text-blue-700 font-semibold">{service.serviceName}</h4>
+              <p className="text-blue-600">{service.serviceIntro}</p>
               <p className="text-blue-700 font-semibold mt-2">
-                Price: {service.price}
+                Price: {service.servicePrice}
               </p>
             </div>
           ))}
@@ -219,11 +220,11 @@ export default async function AgentIntroduction({
           Contact & Location
         </h3>
         <p className="text-blue-600">
-          For any inquiries, feel free to reach out to {agentData.name} at:
+          For any inquiries, feel free to reach out to {agent.name} at:
         </p>
-        <p className="text-blue-600">Phone: {agentData.contact.phone}</p>
-        <p className="text-blue-600">Email: {agentData.contact.email}</p>
-        <p className="text-blue-600 mt-4">{agentData.contact.address}</p>
+        <p className="text-blue-600">Phone: {agent.phone}</p>
+        <p className="text-blue-600">Email: {agent.email}</p>
+        <p className="text-blue-600 mt-4">{agent.address[0].unit}</p>
         <div className="mt-4">
           <iframe
             className="w-full h-64 rounded-md"
