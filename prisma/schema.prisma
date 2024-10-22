@@ -24,27 +24,30 @@ model Client {
 
 model Agent {
   id              String           @id @default(cuid())
+  subId           String
   name            String
   email           String           @unique
   phone           String
   bio             String
   imageUrl        String
-  address         Address?
+
+  address         Address          @relation(fields: [addressId], references: [id])
+  addressId       String     
+
   services        Service[] // An agent has one or more services
   specializations Specialization[] // An agent has one or more specializations
   comments        Comment[] // An agent has one or more comments
 }
 
 model Address {
-  id      Int     @id @default(autoincrement())
+  id      String     @id
   unit    String?
   street  String
   city    String
   state   String
   postal  String
   
-  agent   Agent   @relation(fields: [agentId], references: [id])
-  agentId String  @unique // An address maps to a unique agent
+  agent   Agent[]
 }
 
 model Service {
